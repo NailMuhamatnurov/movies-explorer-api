@@ -27,7 +27,7 @@ const updateUser = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new ValidationError(`${Object.values(err.errors).map((error) => error.message).join(', ')}`));
-      } else if (err.name === 'MongoError' && err.code === 11000) {
+      } else if (err.code === 11000) {
         next(new ItExistError('Пользователь с таким email уже существует'));
       } else {
         next(err);

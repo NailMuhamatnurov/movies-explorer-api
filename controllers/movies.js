@@ -34,7 +34,7 @@ const createMovie = (req, res, next) => {
     year,
     description,
     image,
-    trailer,
+    trailerLink,
     nameRU,
     nameEN,
     thumbnail,
@@ -45,8 +45,6 @@ const createMovie = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new ValidationError(`${Object.values(err.errors).map((error) => error.message).join(', ')}`));
-      } else if (err.name === 'MongoError' && err.code === 11000) {
-        next(new ItExistError('Данный фильм уже сохранен в избранном'));
       } else {
         next(err);
       }

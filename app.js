@@ -10,7 +10,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const handleErrors = require('./middlewares/error-handler');
 const corsOption = require('./middlewares/cors');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3000, dataMovies = 'mongodb://localhost:27017/moviesdb' } = process.env;
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-mongoose.connect('mongodb://localhost:27017/moviesdb', {
+mongoose.connect(dataMovies, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -35,7 +35,4 @@ app.use(errors());
 
 app.use(handleErrors);
 
-app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log(`Слушаем порт ${PORT}`);
-});
+app.listen(PORT, () => PORT);

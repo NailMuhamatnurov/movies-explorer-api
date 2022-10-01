@@ -34,7 +34,7 @@ const validateSignup = celebrate({
 const validateSignin = celebrate({
   body: Joi.object().keys({
     email: checkedEmail,
-    password: Joi.string().required().min(4),
+    password: Joi.string().required(),
   }),
 });
 
@@ -59,7 +59,7 @@ const validateCreateMovie = celebrate({
     year: Joi.string().required(),
     description: Joi.string().required(),
     image: checkedLink,
-    trailer: checkedLink,
+    trailerLink: checkedLink,
     thumbnail: checkedLink,
     movieId: Joi.number().required(),
     nameRU: Joi.string().required(),
