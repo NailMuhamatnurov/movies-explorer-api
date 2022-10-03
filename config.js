@@ -4,7 +4,7 @@ const {
   dataMovies = 'mongodb://localhost:27017/moviesdb',
   PORT = 3000,
   NODE_ENV,
-  JWT_SECRET, 
+  JWT_SECRET,
 } = process.env;
 
 module.exports = {

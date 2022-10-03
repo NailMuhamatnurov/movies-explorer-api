@@ -2,7 +2,6 @@ const Movie = require('../models/movie');
 const NotFoundError = require('../errors/notFoundError');
 const NoRightsError = require('../errors/noRightsError');
 const ValidationError = require('../errors/validationError');
-const ItExistError = require('../errors/itExistError');
 
 const getUserMovies = (req, res, next) => {
   Movie.find({ owner: req.user._id })
@@ -20,7 +19,7 @@ const createMovie = (req, res, next) => {
     year,
     description,
     image,
-    trailer,
+    trailerLink,
     nameRU,
     nameEN,
     thumbnail,
