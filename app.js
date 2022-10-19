@@ -3,12 +3,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-// const cors = require('cors');
+const cors = require('cors');
 const { errors } = require('celebrate');
 const router = require('./routes/index');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const handleErrors = require('./middlewares/error-handler');
-// const corsOption = require('./middlewares/cors');
+const corsOption = require('./middlewares/cors');
 
 const { PORT = 3000, dataMovies = 'mongodb://localhost:27017/moviesdb' } = process.env;
 
@@ -25,7 +25,7 @@ mongoose.connect(dataMovies, {
 
 app.use(requestLogger);
 
-// app.use(cors(corsOption));
+app.use(cors(corsOption));
 
 app.use(router);
 
