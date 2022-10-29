@@ -1,4 +1,5 @@
-const { NODE_ENV, JWT_SECRET } = process.env;
+/*const { NODE_ENV, JWT_SECRET } = process.env;*/
+const { JWT_SECRET } = process.env;
 const jwt = require('jsonwebtoken');
 const AuthError = require('../errors/authError');
 
@@ -14,7 +15,8 @@ const auth = (req, res, next) => {
 
   let payload;
   try {
-    payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
+    /* payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');*/
+    payload = jwt.verify(token, JWT_SECRET);
   } catch (err) {
     return next(new AuthError('Токен не верифицирован, авторизация не пройдена'));
   }
