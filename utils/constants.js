@@ -1,5 +1,7 @@
 const CORS_WHITELIST = ['http://localhost:3001',
   'http://localhost:3000',
+  'https://nailm.movies.students.nomoredomains.icu',
+  'http://nailm.movies.students.nomoredomains.icu',
 ];
 
 const ERROR_CODE_VALIDATION = 400;
