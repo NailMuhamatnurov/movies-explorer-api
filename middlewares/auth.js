@@ -3,16 +3,14 @@ const jwt = require('jsonwebtoken');
 const AuthError = require('../errors/authError');
 
 const auth = (req, res, next) => {
- /* const { cookies } = req;
-  const authorization = cookies.token;*/
-  const { token } = req.cookies;
-
-  /*if (!authorization) {*/
-  if (!token) {
+  const { cookies } = req;
+  const authorization = cookies.token;
+ 
+  if (!authorization) {
     return next(new AuthError('Токен остутствует или некорректен'));
   }
 
-  /*const token = authorization;*/
+  const token = authorization;
 
   let payload;
   try {
